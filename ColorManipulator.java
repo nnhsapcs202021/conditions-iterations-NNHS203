@@ -1,5 +1,6 @@
 import java.awt.Color;
 
+
 /**
  * Class that manipulates the colors in a specified picture
  *
@@ -9,7 +10,7 @@ import java.awt.Color;
 public class ColorManipulator
 {
     private Picture picture;
-
+//hi
     /**
      * Constructs a new ColorManipulator object with the specified picture
      *
