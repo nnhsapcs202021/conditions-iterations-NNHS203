@@ -4,8 +4,8 @@ import java.awt.Color;
 /**
  * Class that manipulates the colors in a specified picture
  *
- * @author gcschmit
- * @version 5 June 2017
+ * @author hansheng liu
+ * @version 6 Jan 2020
  */
 public class ColorManipulator
 {
@@ -47,11 +47,63 @@ public class ColorManipulator
             for( int x = 0; x < width; x++ )
             {
                 Pixel pixel = this.picture.getPixel( x, y );
-                pixel.setBlue( 255 );
+                pixel.setBlue( 255 ); // pixel can go from 0-255
+                
             }
         }
     }
+    public void maxRed()
+    {int width = this.picture.getWidth();
+        int height = this.picture.getHeight();
 
+        for( int y = 0; y < height; y++ )
+        {
+            for( int x = 0; x < width; x++ )
+            {
+                Pixel pixel = this.picture.getPixel( x, y );
+                pixel.setRed( 255 ); // pixel can go from 0-255
+                
+            }
+        }
+    }
+     public void maxGreen()
+    {int width = this.picture.getWidth();
+        int height = this.picture.getHeight();
+
+        for( int y = 0; y < height; y++ )
+        {
+            for( int x = 0; x < width; x++ )
+            {
+                Pixel pixel = this.picture.getPixel( x, y );
+                pixel.setGreen( 255 ); // pixel can go from 0-255
+                
+            }
+        }
+    }
+   public void grayscale()
+    {  
+        int width = this.picture.getWidth();
+        int height = this.picture.getHeight();
+
+        for( int y = 0; y < height; y++ )
+        {
+            for( int x = 0; x < width; x++ )
+            {
+             
+                Pixel pixel = this.picture.getPixel( x, y );
+                Color color = pixel.getColor();
+               int pixel_red =  pixel.getRed();
+               int pixel_blue = pixel.getBlue();
+               int pixel_green = pixel.getGreen();   
+               int pixel_gray = (pixel_red+pixel_blue+pixel_green)/3;
+               Color grayed = new Color(pixel_gray,pixel_gray,pixel_gray);
+ 
+                pixel.setColor( grayed );
+            }
+        }
+       
+
+    }
     /**
      * Negates the color of every pixel in the picture
      *
@@ -82,10 +134,10 @@ public class ColorManipulator
     public static void main(String args[])
     {
         // the selfie image must be in the Shepard Fairey folder
-        Picture picture= new Picture( "selfiePortrait.jpg" );
+        Picture picture= new Picture( "Schmit.jpg" );
         ColorManipulator manipulator = new ColorManipulator( picture );
         picture.explore();
-        manipulator.negate();
+        manipulator.grayscale();
         picture.explore();
     }
 }
