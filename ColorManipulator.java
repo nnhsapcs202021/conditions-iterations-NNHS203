@@ -104,6 +104,7 @@ public class ColorManipulator
        
 
     }
+   
     /**
      * Negates the color of every pixel in the picture
      *
@@ -137,7 +138,7 @@ public class ColorManipulator
         Picture picture= new Picture( "Schmit.jpg" );
         ColorManipulator manipulator = new ColorManipulator( picture );
         picture.explore();
-        manipulator.grayscale();
+        manipulator.negate();
         picture.explore();
     }
 }

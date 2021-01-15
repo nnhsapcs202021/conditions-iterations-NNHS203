@@ -27,7 +27,40 @@ public class ShepardFairey
      *
      */
     public void transform()
-    {
+    {int width = this.picture.getWidth();
+        int height = this.picture.getHeight();
+
+        for( int y = 0; y < height; y++ )
+        {
+            for( int x = 0; x < width; x++ )
+            {
+             
+                Pixel pixel = this.picture.getPixel( x, y );
+                Color color = pixel.getColor();
+               int pixel_red =  pixel.getRed();
+               int pixel_blue = pixel.getBlue();
+               int pixel_green = pixel.getGreen();   
+               int pixel_gray = (pixel_red+pixel_blue+pixel_green)/3;
+               Color grayed = new Color(pixel_gray,pixel_gray,pixel_gray);
+              
+                pixel.setColor( grayed );
+                if (pixel_gray <=55)
+                { pixel.setColor(DARK_BLUE);
+                }
+                else if (pixel_gray <= 110)
+                { pixel.setColor(RED);
+                
+                }
+                else if (pixel_gray <= 165)
+                { pixel.setColor(LIGHT_BLUE);
+                
+                }
+                else
+                { pixel.setColor(OFF_WHITE);
+                
+                }
+            }
+        }
         
     }
 
@@ -35,7 +68,7 @@ public class ShepardFairey
     {
         // create a new picture object based on the original selfie
         //  (the selfie image must be in the Shepard Fairey folder)
-        Picture selfie = new Picture( "selfiePortrait.jpg" );
+        Picture selfie = new Picture( "Schmit.jpg" );
 
         // create a ShepardFairey object to transform the selfie picture
         ShepardFairey fairey = new ShepardFairey( selfie );
@@ -55,17 +88,9 @@ public class ShepardFairey
          * You may need to specify an absolute path. For example:
          *  finalPic.write("C:\\Users\\gschmit\\GitHub\\decisions-loops-gcschmit\\Shepard Fairey\\MrSchmitPortrait.jpg");
          */
-        selfie.write( "MrSchmitPortrait.jpg" );
+        selfie.write( "C:\\Users\\liuha\\conditions-iterations-new\\MrSchmitPortrait.jpg");
         
-        // repeat the steps for the selfie in landscape orientation
-        selfie = new Picture( "selfieLandscape.jpg" );
-        fairey = new ShepardFairey( selfie );
-        selfie.explore();
-        fairey.transform();
-        selfie.explore();
-        selfie.write( "MrCallaghanLandscape.jpg" );
-
-        // display the transformed selfie picture
-        selfie.explore();
+        
+  
     }
 }
