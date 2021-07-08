@@ -10,7 +10,18 @@ public class CommonLoopAlgorithms
     */
   public static double average()
   {
-      return 0;
+      Scanner s = new Scanner( System.in );
+      double sum = 0;
+      int count =0;
+         
+       while (s.hasNextDouble() ){
+          System.out.println("Enter a number or enter a letter to end");
+          double num = s.nextDouble();
+          sum += num;
+          count ++;
+     
+        }
+      return sum/count;
   }
 
    /*
